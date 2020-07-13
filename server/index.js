@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 const app = express()
-const {spawn} = require('child_process');
+const getCachedSensorReading = require('./getCachedTemp36')
 const port = 3000
 
 app.use('/public', express.static(path.join(__dirname, 'public')))
