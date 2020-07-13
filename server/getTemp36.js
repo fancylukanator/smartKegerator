@@ -1,10 +1,11 @@
-/*const path = require('path')
+
+const path = require('path')
 const {spawn} = require('child_process')
 
 /**
  * Run python script, pass in `-u` to not buffer console output 
  * @return {ChildProcess}
- 
+ */
 function runScript(){
   return spawn('python', [
     "-u", 
@@ -23,14 +24,4 @@ subprocess.stderr.on('data', (data) => {
 });
 subprocess.on('close', () => {
   console.log("Closed");
-});
-*/
-
-const { spawn } = require('child_process');
-const pyProg = spawn('python', ['./serialTemp.py']);
-
-pyProg.stdout.on('data', function(data) {
-  console.log(data.toString());
-  res.write(data);
-  res.end('end');
 });
