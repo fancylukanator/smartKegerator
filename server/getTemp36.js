@@ -7,9 +7,10 @@ const getSensorReading = (callback) => {
       "-u", 
       path.join(__dirname, 'serialTemp36.py')
     ]);
+  const subprocess = runScript()
   callback(null, temperature)
   }
-  const subprocess = runScript()
+  
 }
 
 
