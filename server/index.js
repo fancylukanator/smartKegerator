@@ -13,12 +13,11 @@ app.get('/temperature', function(req, res) {
         console.log('Pipe data from python script ...');
         dataToSend = data.toString();
     });
-    python.on('close', (code)  {
-        console.log('child process close allstdio with code${code}');
+    python.on('close', (code) =>{
+        console.log('child process close allstdio with code ${code}');
         res.send(dataToSend)
     });
 })
 
-app.listen(port, function(){
-    console.log('Server listening on port ${port}')
-})
+app.listen(port, () => console.log(`Smart Kegerator listening on port 
+${port}!`))
