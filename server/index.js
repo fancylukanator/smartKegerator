@@ -8,7 +8,7 @@ const port = 3000
 app.use('/public', express.static(path.join(__dirname, 'public')))
 
 app.get('/temperature', (req, res) => {      
-    let tempRaw = execSync(__dirname + '/tmp102.py').toString();
+    let tempRaw = execSync(__dirname + '/serialTemp36.py').toString();
     let temp = parseFloat(tempRaw.split('\n')[0]);
     res.json({
         temperature: {
