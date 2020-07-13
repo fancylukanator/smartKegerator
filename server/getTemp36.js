@@ -16,7 +16,7 @@ const subprocess = runScript()
 
 // print output of script
 subprocess.stdout.on('data', (data) => {
-  console.log(`data:${data}`);
+  console.log(`${data}`);
 });
 subprocess.stderr.on('data', (data) => {
   console.log(`error:${data}`);

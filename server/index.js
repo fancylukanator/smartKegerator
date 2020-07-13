@@ -1,17 +1,24 @@
 const express = require('express')
 const path = require('path')
 const app = express()
+const {spawn} = require('child_process');
+const port = 3000
 
 app.use('/public', express.static(path.join(__dirname, 'public')))
 
 app.get('/temperature', function(req, res) {      
-    res.send('24 °C')
+    var dataToSend;
+    const python = spawn('python', ['serialTemp36.py'])
+    python.stdout.on('data', function (data) {
+        console.log('Pipe data from python script ...');
+        dataToSend = data.toString();
+    });
+    python.on('close', (code)  {
+        console.log('child process close allstdio with code${code}');
+        res.send(dataToSend)
+    });
 })
 
-app.get('/humidity', function(req, res) {
-    res.send('48%')
-})
-
-app.listen(3000, function(){
-    console.log('Server listening on port 3000')
+app.listen(port, function(){
+    console.log('Server listening on port ${port}')
 })
