@@ -7,16 +7,25 @@ const port = 3000
 app.use('/public', express.static(path.join(__dirname, 'public')))
 
 app.get('/temperature', function(req, res) {      
-    var dataToSend;
-    const python = spawn('python', ['serialTemp36.py'])
-    python.stdout.on('data', function (data) {
-        console.log('Pipe data from python script ...');
-        dataToSend = data.toString();
-    });
-    python.on('close', (code) =>{
-        console.log('child process close allstdio with code ${code}');
-        res.send(dataToSend)
-    });
+    function runScript(){
+        return spawn('python', [
+          "-u", 
+          path.join(__dirname, 'serialTemp36.py')
+        ]);
+      }
+      
+      const subprocess = runScript()
+      
+      // print output of script
+      subprocess.stdout.on('data', (data) => {
+        console.log(`${data}`);
+      });
+      subprocess.stderr.on('data', (data) => {
+        console.log(`error:${data}`);
+      });
+      subprocess.on('close', () => {
+        console.log("Closed");
+      });
 })
 
 app.listen(port, () => console.log(`Smart Kegerator listening on port 
