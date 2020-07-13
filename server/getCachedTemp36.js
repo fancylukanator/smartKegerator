@@ -1,11 +1,11 @@
-const getTemp36 = require('./getTemp36')
+const getSensorReading = require('./getTemp36')
 
 const cache = {
     temperature: null
 }
 
 setInterval(() => {
-    getTemp36((err, temperature) => {
+    getSensorReading((err, temperature) => {
         if (err) {
             return console.error(err)
         }
@@ -13,4 +13,4 @@ setInterval(() => {
     })
 }, 2000)
 
-module.exports.getTemp36 = () => cache.temperature
+module.exports.getTemperature = () => cache.temperature

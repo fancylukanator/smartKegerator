@@ -7,7 +7,7 @@ const port = 3000
 app.use('/public', express.static(path.join(__dirname, 'public')))
 
 app.get('/temperature', function(req, res) {      
-    res.send(getCachedTemp36.getTemp36().toFixed(1))
+    res.send(getCachedSensorReading.getTemperature().toFixed(1))
 })
 
 app.listen(port, () => console.log(`Smart Kegerator listening on port 

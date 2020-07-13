@@ -1,6 +1,5 @@
 const path = require('path')
 const {spawn} = require('child_process');
-const { getTemp36 } = require('./getCachedTemp36');
 
 /**
  * Run python script, pass in `-u` to not buffer console output 
@@ -15,4 +14,4 @@ function runScript(){
 
 const subprocess = runScript()
 
-module.exports = getTemp36
+module.exports = getSensorReading
