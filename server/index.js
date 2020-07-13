@@ -8,10 +8,10 @@ app.use('/public', express.static(path.join(__dirname, 'public')))
 
 app.get('/temperature', function(req, res) {      
     var dataToSend;
-    const python = spawn('python', ['script1.py'])
+    const python = spawn('python', ['serialTemp36.py'])
     python.stdout.on('data', function (data) {
         console.log('Pipe data from python script ...');
-        dataToSend = data.toString();
+        dataToSend = data.toFloat();
     });
     python.on('close', (code) =>{
         console.log('child process close allstdio with code ${code}');
