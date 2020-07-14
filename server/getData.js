@@ -9,7 +9,7 @@ const {spawn} = require('child_process')
 function runScript(){
   return spawn('python', [
     "-u", 
-    path.join(__dirname, 'serialTemp36.py')
+    path.join(__dirname, 'serialData.py')
   ]);
 }
 
