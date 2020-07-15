@@ -14,7 +14,7 @@ io.on('connection', function(socket){
         () => getData(socket),
         1000
     );
-    socket.on("disconnect", () => consol.log("Client disconnected"));    
+    socket.on("disconnect", () => console.log("Client disconnected"));    
 });                                                   
  
 server.listen(3000); //run on port 3000
