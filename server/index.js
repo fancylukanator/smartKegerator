@@ -8,7 +8,6 @@ const {spawn} = require('child_process');
 
 const path = require('path');
 
-const port = 3000
 
 app.get('/', function(req, res) {                  
     res.sendfile(__dirname + '/index.html'); //serve the static html file
@@ -32,5 +31,5 @@ io.on('connection', (socket) => {
     console.log("someone connected");
 })
 
-app.listen(port, () => console.log(`Smart Kegerator listening on port 
-${port}!`))
+app.listen(3000, () => console.log(`Smart Kegerator listening on port 
+3000!`))
