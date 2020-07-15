@@ -1,4 +1,3 @@
-const path =require('path');
 var app = require('express')();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
@@ -8,7 +7,7 @@ var io = require('socket.io')(http);
 
 //serve index.html at localhost:3000
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
+    res.sendFile(__dirname + '/public/index.html');
 });
 
 
@@ -16,7 +15,7 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
     console.log('Connected');
     //now send the data
-    socket.emit('message', {'message': 'hello world'});
+
     socket.on('disconnect', () => {
         console.log('Disconnected')
     })
