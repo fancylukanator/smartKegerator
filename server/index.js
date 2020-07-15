@@ -1,22 +1,27 @@
 const express = require('express')
+
 const path = require('path')
+
 const app = express()
-const exec = require('child_process').exec;
-const execSync = require('child_process').execSync;
+
 const port = 3000
 
-app.use('/public', express.static(path.join(__dirname, 'public')))
+const content = require('fs').readFileSync(__dirname + '../public/index.html', 'utf8');
 
-app.get('/temperature', (req, res) => {      
-    let tempRaw = execSync(__dirname + '/getTemp36.js').toString();
-    let temp = parseFloat(tempRaw.split('\n')[0]);
-    res.json({
-        temperature: {
-        value: temp,
-        description: 'Temperature in Celcius'
-        }
-    });
+const httpServer = require('http').createServer((req, res) => {
+    // serve index.html
+    res.setHeader('Content-Type', 'text/html');
+    res.setHeader('Content-Length', Buffer.byteLenght(content));
+    res.end(content);
 })
 
-app.listen(port, () => console.log(`Smart Kegerator listening on port 
-${port}!`))
+const io = require(socket.io)(httpServer);
+
+io.on('connect', socket => {
+    console.log('connect');
+});
+
+
+app.listen(port, () => {
+    console.log(`Smart Kegerator listening on port ${port}!`);
+});
