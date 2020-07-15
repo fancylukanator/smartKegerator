@@ -22,10 +22,6 @@ io.on('connection', (socket) => {
     })
 });
 
-//send asset files
-//app.use( '/assets/', express.static( path.resolve( __dirname, 'public' ) ) );
-//app.use( '/assets/', express.static( path.resolve( __dirname, 'node_modules/socket.io-client/dist' ) ) );
-
 //server listening on port 3000
 const server = app.listen(3000, () => console.log('Listening on port 3000'));
 
