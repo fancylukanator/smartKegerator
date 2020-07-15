@@ -1,12 +1,10 @@
 const path =require('path');
-const express = require('express');
-const socketIO = require('socket.io');
+var app = require('express')();
+var http = require('http').createServer(app);
+var io = require('socket.io')(http);
 
 //import data API
 const { toggle } = require('./getData')
-
-//create express app
-const app = express();
 
 //serve index.html at localhost:3000
 app.get('/', (req, res) => {
@@ -17,8 +15,6 @@ app.get('/', (req, res) => {
     });
 });
 
-//create websocket server
-const io = socketIO(server);
 
 //listen for connection
 io.on('connection', (client) => {
