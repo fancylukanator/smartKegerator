@@ -1,27 +1,18 @@
-const express = require('express')
-
-const path = require('path')
-
-const app = express()
-
-const port = 3000
-
 const content = require('fs').readFileSync(__dirname + '/index.html', 'utf8');
 
 const httpServer = require('http').createServer((req, res) => {
-    // serve index.html
-    res.setHeader('Content-Type', 'text/html');
-    res.setHeader('Content-Length', Buffer.byteLenght(content));
-    res.end(content);
-})
+  // serve the index.html file
+  res.setHeader('Content-Type', 'text/html');
+  res.setHeader('Content-Length', Buffer.byteLength(content));
+  res.end(content);
+});
 
 const io = require('socket.io')(httpServer);
 
 io.on('connect', socket => {
-    console.log('connect');
+  console.log('connect');
 });
 
-
-app.listen(port, () => {
-    console.log(`Smart Kegerator listening on port ${port}!`);
+httpServer.listen(3000, () => {
+  console.log('go to http://localhost:3000');
 });
