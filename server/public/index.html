@@ -10,24 +10,18 @@
 
   <body>
     <header>Smart Kegerator</header>
-    <ul id="events"></ul>
 
-    <script src="/sockeet.io/socket.io.js"></script>
-    <script>
-      const $events = document.getElementById('events');
+    <div class="container">
 
-      const newItem = (content) => {
-        const item = document.createElement('li');
-        item.innerText = content;
-        return item;
-      };
-      
-      const socket = io();
+      <div class="temperature">
 
-      socket.on('connect', () => {
-        $events.appendChild(newItem('connect'));
-      });
-    </script>
+        <p class="title">Temperature</p>
+        <p class="value" id="temperature-display">Loading... </p>
+        <p class="unit" >°C</p>
+
+      </div>
+
+    </div>
 
     <script src="script.js"></script>
 
