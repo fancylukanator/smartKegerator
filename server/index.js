@@ -7,9 +7,9 @@ app.get('/', (req, res) => {
   });
 
 io.on('connection', (socket) => {
-    console.log('a user connected');
+    console.log('${io.engine.clientCount} connections');
     socket.on('disconnect', () => {
-        console.log('user disconnected')
+        console.log('disconnect: ${socket.id}')
     })
 });
 
