@@ -13,12 +13,12 @@ app.get('/', (req, res) => {
 
 
 //listen for connection
-io.on('connection', (client) => {
-    console.log('SOCKET: ', 'A client connected', client.id);
+io.on('connection', (socket) => {
+    console.log('Connected');
     //now send the data
     socket.emit('message', {'message': 'hello world'});
     socket.on('disconnect', () => {
-        console.log(client.id, 'disconnected')
+        console.log('Disconnected')
     })
 });
 
