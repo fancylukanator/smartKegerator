@@ -17,7 +17,8 @@ app.get('/', (req, res) => {
         dataToSend = data.toString();
     });
     python.on('close', (code) => {
-        console.log(`child process close all stdio with code ${code}`);
+        console.log(`child process close all stdio with code`);
+    });
 });
 
 
