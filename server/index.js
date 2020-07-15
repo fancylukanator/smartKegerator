@@ -16,7 +16,7 @@ io.on('connection', (socket) => {
     console.log('Connected');
     //now send the data
     socket.emit('message', {'message': 'hello world'});
-    socket.emit('data', {data});
+    socket.emit('data', {${data}});
     //listen for disconnectS
     socket.on('disconnect', () => {
         console.log('Disconnected')
