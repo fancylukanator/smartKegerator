@@ -1,26 +1,36 @@
 const app = require('express')(); //Express Library
+
 const server = require('http').Server(app); //Create HTTP instance
+
 const io = require('socket.io')(server); //Socket.IO Library
+
 const {spawn} = require('child_process');
+
 const path = require('path');
+
+const port = 3000
 
 app.get('/', function(req, res) {                  
     res.sendfile(__dirname + '/index.html'); //serve the static html file
 }); 
 
-io.on('connection', function(socket){
-    console.log("New client connected"), setInterval(
-        () => getData(socket),
-        1000
-    );
-    socket.on("disconnect", () => console.log("Client disconnected"));    
-});                                                   
- 
-server.listen(3000); //run on port 3000
+const SerialPort = require('serialport');
 
-const getData = function () {
-    return spawn('python', [
-      "-u", 
-      path.join(__dirname, 'serialData.py')
-    ]);
-}
+constReadline = SerialPort.parsers.Readline;
+
+const port = new SerialPort('/dev/ttyACM0');
+
+const parser = port.pipe(new Readline({delimiter: '\r\n'}));
+
+parser.on('data', (temp) => {
+    console.log(temp);
+    var today = new Date();
+    io.sockets.emit('temp', {date: today.getDate()+"-"+today.getMonth()+1+"-"+today.getFullYear(), time: (today.getHours())+":"+(today.getMinutes()), temp:temp})
+});
+
+io.on('connection', (socket) => {
+    console.log("someone connected");
+})
+
+app.listen(port, () => console.log(`Smart Kegerator listening on port 
+${port}!`))
