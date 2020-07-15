@@ -17,14 +17,16 @@ app.get('/', (req, res) => {
     });
 });
 
+//create websocket server
+const io = socketIO(server);
 
 //listen for connection
-io.on('connection', (socket) => {
-    console.log('a user connected');
+io.on('connection', (client) => {
+    console.log('SOCKET: ', 'A client connected', client.id);
     //now send the data
     socket.emit('message', {'message': 'hello world'});
     socket.on('disconnect', () => {
-        console.log('disconnected')
+        console.log(client.id, 'disconnected')
     })
 });
 
@@ -35,12 +37,3 @@ io.on('connection', (socket) => {
 //server listening on port 3000
 const server = app.listen(3000, () => console.log('Listening on port 3000'));
 
-//create websocket server
-const io = socketIO(server);
-
-//listen for connection
-io.on('connection', (client) => {
-    console.log('SOCKET: ', 'A client connected', client.id);
-
-    //listen for d
-})
