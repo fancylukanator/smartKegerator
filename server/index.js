@@ -15,7 +15,7 @@ const httpServer = require('http').createServer((req, res) => {
     res.end(content);
 })
 
-const io = require(socket.io)(httpServer);
+const io = require('socket.io')(httpServer);
 
 io.on('connect', socket => {
     console.log('connect');
