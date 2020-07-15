@@ -6,7 +6,7 @@ const app = express()
 
 const port = 3000
 
-const content = require('fs').readFileSync(__dirname + '/public/index.html', 'utf8');
+const content = require('fs').readFileSync(__dirname + '/index.html', 'utf8');
 
 const httpServer = require('http').createServer((req, res) => {
     // serve index.html
