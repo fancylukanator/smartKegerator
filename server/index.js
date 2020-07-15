@@ -1,18 +1,27 @@
-const content = require('fs').readFileSync(__dirname + '/index.html', 'utf8');
+const app = require('express')(); //Express Library
+const server = require('http').Server(app); //Create HTTP instance
+const io = require('socket.io')(server); //Socket.IO Library
+const {spawn} = require('child_process');
+const path = require('path');
+const subprocess = getData();
 
-const httpServer = require('http').createServer((req, res) => {
-  // serve the index.html file
-  res.setHeader('Content-Type', 'text/html');
-  res.setHeader('Content-Length', Buffer.byteLength(content));
-  res.end(content);
-});
+app.get('/', function(req, res) {                  
+    res.sendfile(__dirname + '/index.html'); //serve the static html file
+}); 
 
-const io = require('socket.io')(httpServer);
+io.on('connection', function(socket){
+    console.log("New client connected"), setInterval(
+        () => getData(socket),
+        1000
+    );
+    socket.on("disconnect", () => consol.log("Client disconnected"));    
+});                                                   
+ 
+server.listen(3000); //run on port 3000
 
-io.on('connect', socket => {
-  console.log('connect');
-});
-
-httpServer.listen(3000, () => {
-  console.log('go to http://localhost:3000');
-});
+function getData(){
+    return spawn('python', [
+      "-u", 
+      path.join(__dirname, 'serialData.py')
+    ]);
+}
