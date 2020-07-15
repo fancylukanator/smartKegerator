@@ -7,7 +7,9 @@ var io = require('socket.io')(http);
 //const { toggle } = require('./getData')
 
 //serve index.html at localhost:3000
-app.use('/public', express.static(path.join(__dirname, 'public')))
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + 'public/index.html');
+  });
 
 
 //listen for connection
