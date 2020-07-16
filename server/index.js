@@ -26,7 +26,7 @@ const subprocess = runScript()
 var sensorData = 'not yet defined';
 subprocess.stdout.on('data', (data) => {
     sensorData = data;
-    io.emit('incomingData', sensorData);
+    io.emit('broadcast', sensorData);
     console.log(`${data}`);
 });
 subprocess.stderr.on('data', (data) => {
@@ -47,7 +47,7 @@ io.on('connection', (socket) => {
     console.log('Connected');
     //now send the data
     socket.emit('message', {'message': 'hello world'});
-    socket.emit('incomingData', {'temperature' : sensorData});
+    socket.emit('broadcast', {'temperature' : sensorData});
     //listen for disconnects
     socket.on('disconnect', () => {
         console.log('Disconnected')
