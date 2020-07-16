@@ -8,6 +8,10 @@
 
       var socket = io();
 
+      socket.on('connect', function(socket) {
+      console.log('connected to server');
+      });
+
       socket.on('message', function(test){
         console.log(test.message);
       });
@@ -22,9 +26,7 @@
   </head>
 
   <body>
-    <header>Smart Kegerator</header>
 
-    <div id="sensorData"></div>
   </body>
   
 </html>
