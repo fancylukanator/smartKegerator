@@ -23,11 +23,11 @@
   <script>
     var socket = io();
 
-    socket.on('message', function(data){
-      console.log(data.message);
+    socket.on('message', function(test){
+      console.log(test.message);
     });
-    socket.on('data', function(data) {
-      console.log(data.sensorData);
+    socket.on('incomingData', function(outgoingData) {
+      console.log(outgoingData.sensorData);
     });
   </script>
   </body>

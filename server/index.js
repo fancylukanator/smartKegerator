@@ -3,8 +3,7 @@ var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 
 //import data API
-var { sensorData } = require('./getData')
-console.log(sensorData);
+const { sensorData } = require('./getData');
 
 
 //serve index.html at localhost:3000
@@ -18,7 +17,7 @@ io.on('connection', (socket) => {
     console.log('Connected');
     //now send the data
     socket.emit('message', {'message': 'hello world'});
-    socket.emit('data', sensorData);
+    client.emit('incomingData', sensorData);
     //listen for disconnects
     socket.on('disconnect', () => {
         console.log('Disconnected')
