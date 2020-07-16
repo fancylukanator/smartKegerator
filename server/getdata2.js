@@ -1,5 +1,5 @@
 const { spawn } = require('child_process');
-const ls = spawn('ls', ['-lh', '/serialData.py']);
+const ls = spawn('ls', ['-lh', 'serialData.py']);
 
 ls.stdout.on('data', (data) => {
   console.log(`stdout: ${data}`);
