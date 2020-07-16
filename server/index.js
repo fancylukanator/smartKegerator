@@ -24,7 +24,7 @@ const subprocess = runScript()
 
 // print output of script
 subprocess.stdout.on('data', (data) => {
-    var sensorData = data;
+    var sensorData = ${data};
     io.emit('broadcast', sensorData);
     console.log(`${data}`);
 });
