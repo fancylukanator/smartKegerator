@@ -4,6 +4,9 @@ var io = require('socket.io')(http);
 
 //import data API
 var { sensorData } = require('./getData')
+subprocess.stdout.on('data', (sensorData) => {
+  console.log(`${sensorData}`);
+});
 
 //serve index.html at localhost:3000
 app.get('/', (req, res) => {
