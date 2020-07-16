@@ -28,10 +28,9 @@
         console.log(test.message);
       });
       socket.on('incomingData', function(outgoingData) {
-        $('#sensorData').text(outgoingData.sensorData);
+        console.log(outgoingData.sensorData);
       });
     </script>
-    <div id="sensorData"></div>
   </body>
   
 </html>
