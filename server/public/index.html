@@ -4,14 +4,25 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+
+
+      const $events = document.getElementById('events');
+
+      const newItem = (content) => {
+        const item = document.createElement('li');
+        item.innerText = content;
+        return item;
+      };
+
       var socket = io();
 
       socket.on('message', function(test){
         console.log(test.message);
       });
       socket.on('incomingData', function(outgoingData) {
-        $('sensorData').html(outgoingData.sensorData);
+        //$('sensorData').html(outgoingData.sensorData);
         console.log(outgoingData.sensorData);
+        $events.appendChild(newItem(outgoingData.sensorData));
       });
     </script>
     <title>Smart Kegerator</title>
@@ -19,7 +30,7 @@
 
   <body>
     <header>Smart Kegerator</header>
-    
+
     <div id="sensorData"></div>
   </body>
   
