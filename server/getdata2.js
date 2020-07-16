@@ -1,6 +1,14 @@
 const { spawn } = require('child_process');
-const python3 = spawn('python3', ['serialData.py']);
+const ls = spawn('ls', ['-lh', '/serialData.py']);
 
-python3.stdout.on('data', (data) => {
+ls.stdout.on('data', (data) => {
   console.log(`stdout: ${data}`);
+});
+
+ls.stderr.on('data', (data) => {
+  console.error(`stderr: ${data}`);
+});
+
+ls.on('close', (code) => {
+  console.log(`child process exited with code ${code}`);
 });
