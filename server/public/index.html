@@ -3,24 +3,6 @@
   <head>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Smart Kegerator</title>
-  </head>
-
-  <body>
-    <header>Smart Kegerator</header>
-
-    <div class="container">
-
-      <div class="temperature">
-
-        <p class="title">Temperature</p>
-        <p class="value" id="temperature-display">Loading... </p>
-        <p class="unit" >°C</p>
-
-      </div>
-
-    </div>
-
     <script>
       var socket = io();
 
@@ -32,6 +14,12 @@
         console.log(outgoingData.sensorData);
       });
     </script>
+    <title>Smart Kegerator</title>
+  </head>
+
+  <body>
+    <header>Smart Kegerator</header>
+    
     <div id="sensorData"></div>
   </body>
   
