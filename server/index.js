@@ -20,17 +20,17 @@ function runScript(){
   ]);
 }
 
-const sensorData = runScript()
-
+const subprocess = runScript()
+var sensorData = stdout;
 // print output of script
-sensorData.stdout.on('data', (data) => {
+subprocess.stdout.on('data', (data) => {
     io.emit('broadcast', sensorData);
     console.log(`${data}`);
 });
-sensorData.stderr.on('data', (data) => {
+subprocess.stderr.on('data', (data) => {
     console.log(`error:${data}`);
 });
-sensorData.on('close', () => {
+subprocess.on('close', () => {
     console.log("Closed");
 });
 
