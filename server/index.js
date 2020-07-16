@@ -21,7 +21,7 @@ io.on('connection', (socket) => {
     //listen for disconnects
     socket.on('disconnect', () => {
         console.log('Disconnected')
-    })
+    });
 });
 
 //server listening on port 3000
