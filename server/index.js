@@ -28,19 +28,18 @@ function runScript(){
 const subprocess = runScript()
 
 // print output of script
+var sensorData = 'not yet defined';
 subprocess.stdout.on('data', (data) => {
-  console.log(`${data}`);
+    sensorData = data;
+    io.emit('incomingData', sensorData);
+    console.log(`${data}`);
 });
 subprocess.stderr.on('data', (data) => {
-  console.log(`error:${data}`);
+    console.log(`error:${data}`);
 });
 subprocess.on('close', () => {
-  console.log("Closed");
+    console.log("Closed");
 });
-
-
-
-
 
 
 
@@ -56,7 +55,7 @@ io.on('connection', (socket) => {
     console.log('Connected');
     //now send the data
     socket.emit('message', {'message': 'hello world'});
-    socket.emit('incomingData', data);
+    socket.emit('incomingData', sensorData);
     //listen for disconnects
     socket.on('disconnect', () => {
         console.log('Disconnected')
