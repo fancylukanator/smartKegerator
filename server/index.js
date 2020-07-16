@@ -3,7 +3,7 @@ var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 
 //import data API
-const { sensorData } = require('./getData')
+var { sensorData } = require('./getData')
 
 //serve index.html at localhost:3000
 app.get('/', (req, res) => {
