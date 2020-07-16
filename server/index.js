@@ -47,7 +47,7 @@ io.on('connection', (socket) => {
     console.log('Connected');
     //now send the data
     socket.emit('message', {'message': 'hello world'});
-    socket.emit('broadcast', {'temperature' : sensorData});
+    socket.emit('broadcast', 'sensorData');
     //listen for disconnects
     socket.on('disconnect', () => {
         console.log('Disconnected')
