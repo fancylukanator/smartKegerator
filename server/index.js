@@ -3,7 +3,46 @@ var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 
 //import data API
-const { sensorData } = require('./getData');
+//const { sensorData } = require('./getData');
+
+
+
+
+
+
+//try to read python file and emit data at the same time
+const path = require('path')
+const {spawn} = require('child_process')
+
+/**
+ * Run python script, pass in `-u` to not buffer console output 
+ * @return {ChildProcess}
+ */
+function runScript(){
+  return spawn('python', [
+    "-u", 
+    path.join(__dirname, 'serialData.py')
+  ]);
+}
+
+const subprocess = runScript()
+
+// print output of script
+subprocess.stdout.on('data', (data) => {
+  console.log(`${data}`);
+});
+subprocess.stderr.on('data', (data) => {
+  console.log(`error:${data}`);
+});
+subprocess.on('close', () => {
+  console.log("Closed");
+});
+
+
+
+
+
+
 
 
 //serve index.html at localhost:3000
