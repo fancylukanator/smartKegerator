@@ -5,12 +5,7 @@ var io = require('socket.io')(http);
 //import data API
 //const { sensorData } = require('./getData');
 
-
-
-
-
-
-//try to read python file and emit data at the same time
+//Read python file and emit data at the same time
 const path = require('path')
 const {spawn} = require('child_process')
 
@@ -40,9 +35,6 @@ subprocess.stderr.on('data', (data) => {
 subprocess.on('close', () => {
     console.log("Closed");
 });
-
-
-
 
 //serve index.html at localhost:3000
 app.get('/', (req, res) => {

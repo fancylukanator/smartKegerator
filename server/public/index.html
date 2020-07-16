@@ -20,6 +20,7 @@
     </div>
 
   <script src="/socket.io/socket.io.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
     var socket = io();
 
@@ -27,9 +28,10 @@
       console.log(test.message);
     });
     socket.on('incomingData', function(outgoingData) {
-      console.log(outgoingData.sensorData);
+      $('#sensorData').text(outgoingData.sensorData);
     });
   </script>
+  <div id="sensorData"></div>
   </body>
   
 </html>
