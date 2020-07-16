@@ -6,14 +6,6 @@
     <script>
 
 
-      const $events = document.getElementById('events');
-
-      const newItem = (content) => {
-        const item = document.createElement('li');
-        item.innerText = content;
-        return item;
-      };
-
       var socket = io();
 
       socket.on('message', function(test){
@@ -22,7 +14,6 @@
       socket.on('incomingData', function(outgoingData) {
         //$('sensorData').html(outgoingData.sensorData);
         console.log(outgoingData.sensorData);
-        $events.appendChild(newItem(outgoingData.sensorData));
       });
     </script>
     <title>Smart Kegerator</title>
