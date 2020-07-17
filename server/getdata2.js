@@ -1,14 +1,9 @@
-const { spawn } = require('child_process');
-const ls = spawn('ls', ['-lh', 'serialData.py']);
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
 
-ls.stdout.on('data', (data) => {
-  console.log(`stdout: ${data}`);
-});
-
-ls.stderr.on('data', (data) => {
-  console.error(`stderr: ${data}`);
-});
-
-ls.on('close', (code) => {
-  console.log(`child process exited with code ${code}`);
-});
+async function lsExample() {
+  const { stdout, stderr } = await exec('ls');
+  console.log('stdout:', stdout);
+  console.error('stderr:', stderr);
+}
+lsExample();
