@@ -1,14 +1,6 @@
-var serialport = require('serialport');
-var SerialPort = serialport.SerialPort;
+const SerialPort = require('serialport')
+const Readline = require('@serialport/parser-readline')
+const port = new SerialPort('/dev/ttyACM0')
 
-var port = new SerialPort("/dev/ttyACM0", {
-  baudrate: 9600,
-  parser: serialport.parsers("\n")
-});
-
-port.on("open", function () {
-  console.log('open');
-  port.on('data', function(data) {
-      console.log(data);
-  });
-});
+const parser = port.pipe(new Readline({ delimiter: '\r\n' }))
+parser.on('data', console.log)
