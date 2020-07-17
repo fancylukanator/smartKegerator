@@ -15,7 +15,7 @@
       socket.on('message', function(test){
         console.log(test.message);
       });
-      socket.on(evt, function(data) {
+      socket.on('evt', function(data) {
         //$('sensorData').html(outgoingData.sensorData);
         console.log(data.evt);
         //document.body.innerHTML = '';
