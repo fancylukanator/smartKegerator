@@ -13,6 +13,7 @@ const port = new SerialPort('/dev/ttyACM0')
 const parser = port.pipe(new Readline({ delimiter: '\r\n' }))
 parser.on('data', (sensorData) => {
     console.log(sensorData);
+    var today = new Date();
     io.sockets.emit('broadcast', {date: today.getDate()+"-"+today.getMonth()+1+"-"+today.getFullYear(), time: (today.getHours())+":"+(today.getMinutes()), temp:sensorData});
 });
 
