@@ -16,6 +16,7 @@
         console.log(test.message);
       });
       socket.on('broadcast', function(data) {
+        console.log(data.broadcast);
         $('sensorData').html(data.broadcast);
         document.body.innerHTML = '';
         document.write(data.broadcast);

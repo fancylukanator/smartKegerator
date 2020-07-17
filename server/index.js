@@ -11,15 +11,17 @@ const Readline = require('@serialport/parser-readline');
 const { serialize } = require('v8');
 const port = new SerialPort('/dev/ttyACM0')
 const parser = port.pipe(new Readline({ delimiter: '\r\n' }))
-parser.on('data', console.log)
-sensorData = parser.on('data')
+parser.on('data', (sensorData) => {
+    console.log(sensorData);
+    socket.emit('broadcast', {date: today.getDate()+"-"+today.getMonth()+1+"-"+today.getFullYear(), time: (today.getHours())+":"+(today.getMinutes()), temp:sensorData});
+}
 
 //listen for connection
 io.on('connection', (socket) => {
     console.log('Connected');
     //now send the data
     socket.emit('message', {'message': 'hello world'});
-    socket.emit('broadcast', 'sensorData');
+    //socket.emit('broadcast', 'sensorData');
     //listen for disconnects
     socket.on('disconnect', () => {
         console.log('Disconnected')
