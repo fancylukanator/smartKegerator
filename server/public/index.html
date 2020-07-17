@@ -15,11 +15,11 @@
       socket.on('message', function(test){
         console.log(test.message);
       });
-      socket.on('broadcast', function(data) {
-        console.log(data.broadcast);
-        $('sensorData').html(data.broadcast);
+      socket.on('temp', function(data) {
+        console.log(data.temp);
+        $('sensorData').html(data.temp);
         document.body.innerHTML = '';
-        document.write(data.broadcast);
+        document.write(data.temp);
       });
     </script>
     <title>Smart Kegerator</title>
