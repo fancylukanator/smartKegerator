@@ -9,7 +9,7 @@ var io = require('socket.io')(http);
 const SerialPort = require('serialport')
 const Readline = require('@serialport/parser-readline')
 const port = new SerialPort('/dev/ttyACM0')
-var sensorData = data;
+var sensorData = 'data';
 const parser = port.pipe(new Readline({ delimiter: '\r\n' }))
 parser.on('data', console.log)
 
