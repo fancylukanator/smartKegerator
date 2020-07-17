@@ -5,40 +5,13 @@ var io = require('socket.io')(http);
 //import data API
 //const { sensorData } = require('./getData');
 
-//Read python file and emit data at the same time
-const path = require('path')
-const {spawn} = require('child_process')
-
-/**
- * Run python script, pass in `-u` to not buffer console output 
- * @return {ChildProcess}
- */
-function runScript(){
-  return spawn('python', [
-    "-u", 
-    path.join(__dirname, 'serialData.py')
-  ]);
-}
-
-const subprocess = runScript()
-var sensorData;
-// print output of script
-subprocess.stdout.on('data', (data) => {
-    sensorData = data
-    io.emit('broadcast', sensorData);
-    console.log(`${data}`);
-});
-subprocess.stderr.on('data', (data) => {
-    console.log(`error:${data}`);
-});
-subprocess.on('close', () => {
-    console.log("Closed");
-});
-
-//serve index.html at localhost:3000
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
-});
+//Read arduino data via serial port
+const SerialPort = require('serialport')
+const Readline = require('@serialport/parser-readline')
+const port = new SerialPort('/dev/ttyACM0')
+var sensorData = data;
+const parser = port.pipe(new Readline({ delimiter: '\r\n' }))
+parser.on('data', console.log)
 
 
 //listen for connection
@@ -46,10 +19,7 @@ io.on('connection', (socket) => {
     console.log('Connected');
     //now send the data
     socket.emit('message', {'message': 'hello world'});
-    //socket.emit('broadcast', 'sensorData');
-    socket.on('dataout', (evt) => {
-        log(evt)
-        socket.broadcast.emit('dataout', evt)
+    socket.emit('broadcast', 'sensorData');
     })
     //listen for disconnects
     socket.on('disconnect', () => {
