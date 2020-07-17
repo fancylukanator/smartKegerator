@@ -1,16 +1,14 @@
-const express = require('express')
-const app = express()
+var serialport = require('serialport');
+var SerialPort = serialport.SerialPort;
 
-app.get('/', (req, res) => {
+var port = new SerialPort("/dev/ttyACM0", {
+  baudrate: 9600,
+  parser: serialport.parsers.readline("\n")
+});
 
-    const { spawn } = require('child_process');
-    const pyProg = spawn('python', ['serialData.py']);
-
-    pyProg.stdout.on('data', function(data) {
-
-        console.log(data);
-
-    });
-})
-
-app.listen(4000, () => console.log('Application listening on port 4000!'))
+port.on("open", function () {
+  console.log('open');
+  port.on('data', function(data) {
+      console.log(data);
+  });
+});
