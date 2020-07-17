@@ -14,7 +14,7 @@ const parser = port.pipe(new Readline({ delimiter: '\r\n' }))
 parser.on('data', (sensorData) => {
     console.log(sensorData);
     socket.emit('broadcast', {date: today.getDate()+"-"+today.getMonth()+1+"-"+today.getFullYear(), time: (today.getHours())+":"+(today.getMinutes()), temp:sensorData});
-}
+});
 
 //listen for connection
 io.on('connection', (socket) => {
