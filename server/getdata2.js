@@ -1,9 +1,4 @@
-const util = require('util');
-const exec = util.promisify(require('child_process').exec);
-
-async function lsExample() {
-  const { stdout, stderr } = await exec('ls', 'serialData.py');
-  console.log('stdout:', stdout);
-  console.error('stderr:', stderr);
-}
-lsExample();
+var child = require('child_process').execFile('serialData.py', function(err, stdout, stderr) { 
+  // Node.js will invoke this callback when process terminates.
+  console.log(stdout); 
+});  
