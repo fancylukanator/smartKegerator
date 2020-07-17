@@ -2,7 +2,7 @@ const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
 async function lsExample() {
-  const { stdout, stderr } = await exec('ls');
+  const { stdout, stderr } = await exec('ls', 'serialData.py');
   console.log('stdout:', stdout);
   console.error('stderr:', stderr);
 }
