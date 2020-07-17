@@ -16,10 +16,10 @@ const Readline = require('@serialport/parser-readline');
 const { serialize } = require('v8');
 const port = new SerialPort('/dev/ttyACM0')
 const parser = port.pipe(new Readline({ delimiter: '\r\n' }))
-parser.on('data', (temp) => {
-    console.log("Receiving Data");
+parser.on('data', (sensorData) => {
+    console.log(sensorData);
     //var today = new Date();
-    io.sockets.emit('temp', temp);
+    io.sockets.emit('sensorData', {sensorData: sensorData});
 });
 
 //listen for connection
