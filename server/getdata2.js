@@ -3,7 +3,7 @@ var SerialPort = serialport.SerialPort;
 
 var port = new SerialPort("/dev/ttyACM0", {
   baudrate: 9600,
-  parser: serialport.parsers.readline("\n")
+  parser: serialport.parsers("\n")
 });
 
 port.on("open", function () {
