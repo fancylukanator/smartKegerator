@@ -5,6 +5,11 @@ var io = require('socket.io')(http);
 //import data API
 //const { sensorData } = require('./getData');
 
+//serve index.html at localhost:3000
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+});
+
 //Read arduino data via serial port
 const SerialPort = require('serialport')
 const Readline = require('@serialport/parser-readline');
