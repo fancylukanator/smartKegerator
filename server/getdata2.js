@@ -8,9 +8,8 @@ app.get('/', (req, res) => {
 
     pyProg.stdout.on('data', function(data) {
 
-        console.log(data.toString());
-        res.write(data);
-        res.end('end');
+        console.log(data);
+
     });
 })
 
