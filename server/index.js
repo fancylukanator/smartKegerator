@@ -7,12 +7,12 @@ var io = require('socket.io')(http);
 
 //Read arduino data via serial port
 const SerialPort = require('serialport')
-const Readline = require('@serialport/parser-readline')
+const Readline = require('@serialport/parser-readline');
+const { serialize } = require('v8');
 const port = new SerialPort('/dev/ttyACM0')
-var sensorData = 'data';
 const parser = port.pipe(new Readline({ delimiter: '\r\n' }))
 parser.on('data', console.log)
-
+sensorData = parser.on('data')
 
 //listen for connection
 io.on('connection', (socket) => {
