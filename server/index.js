@@ -17,7 +17,7 @@ const { serialize } = require('v8');
 const port = new SerialPort('/dev/ttyACM0')
 const parser = port.pipe(new Readline({ delimiter: '\r\n' }))
 parser.on('data', (temp) => {
-    console.log(temp);
+    //console.log(temp);
     var today = new Date();
     io.sockets.emit('temp', {date: today.getDate()+"-"+today.getMonth()+1+"-"+today.getFullYear(), time: (today.getHours())+":"+(today.getMinutes()), temp:temp});
 });
