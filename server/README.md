@@ -11,8 +11,8 @@ Hardware:
 
 Server / webapp:
 MEAN stack - MongoDB, Express.js, AngularJS and Node.js:
--index.js is the server
--index.html is the UI
+- index.js is the server
+- index.html is the UI
 
 
 
