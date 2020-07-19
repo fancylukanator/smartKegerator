@@ -13,6 +13,7 @@ Server / webapp:
 MEAN stack - MongoDB, Express.js, AngularJS and Node.js:
 - index.js is the server
 - public/index.html is the UI
+- data is read in realtime using web sockets (socket.io)
 
 
 
