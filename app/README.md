@@ -1,22 +1,27 @@
-This is the repository for the 41.2 Clergy Kegerator:
+# Angularapp
 
-A web application will monitor who drinks, display stats, and showcase whats on tap.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.3.
 
-Hardware:
-- 2 tap kegerator (for beer, duh)
-- 2 YF-S201 flow meters (record data)
-- 1 DS18B20 temperature sensor (ensure beer is cold)
-- Raspberry Pi 3B+ (host the server)
-- Arduino Uno (get sensor readings)
+## Development server
 
-Server / webapp:
-MEAN stack - MongoDB, Express.js, AngularJS and Node.js:
-- index.js is the server
-- public/index.html is the UI
-- data is read in realtime using web sockets (socket.io)
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## Code scaffolding
 
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-Contributors:
+## Build
 
-Luke Steenge
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
