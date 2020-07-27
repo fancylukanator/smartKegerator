@@ -1,5 +1,5 @@
 module.exports = {
-    HOST: "192.168.2.17",
+    HOST: "localhost",
     PORT: 27017,
     DB: "smartKegerator"
   };
