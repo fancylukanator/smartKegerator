@@ -8,7 +8,7 @@ const dbConfig = require("./config/db.config");
 
 //add body-parser and cors middlewares
 var corsOptions = {
-    origin: "http://localhost:8081"
+    origin: "http://192.168.2.19:8081"
 };
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
@@ -20,6 +20,7 @@ const Role = db.role;
 
 db.mongoose
   .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+    useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
