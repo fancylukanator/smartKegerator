@@ -9,8 +9,7 @@ const dbConfig = require("./config/db.config");
 
 //add body-parser and cors middlewares
 var corsOptions = {
-    origin: "localhost:8081"
-    res.header("Access-Control-Allow-Origin", "*");
+    origin: 'http://192.168.2.19:8081'
 };
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
