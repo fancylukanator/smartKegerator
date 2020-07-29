@@ -6,9 +6,11 @@ const cors = require("cors");
 const dbConfig = require("./config/db.config");
 
 
+
 //add body-parser and cors middlewares
 var corsOptions = {
-    origin: "*"
+    origin: "localhost:8081"
+    res.header("Access-Control-Allow-Origin", "*");
 };
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
