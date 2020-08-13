@@ -1,5 +1,42 @@
-<div class="container">
-    <header class="jumbotron">
-      <p>{{ content }}</p>
-    </header>
+<div class="col-md-6">
+  <div *ngFor="let tap of left">
+    <h4>Left Tap</h4>
+    <div>
+        <label><strong>Brewery:</strong></label> {{ tap.brewery }}
+    </div>
+    <div>
+      <label><strong>Beer:</strong></label> {{ tap.beer }}
+    </div>
+    <div>
+      <label><strong>Description:</strong></label>
+      {{ tap.description }}
+    </div>
+    <div>
+        <label><strong>ABV:</strong></label> {{ tap.abv }}
+    </div>
+    <div>
+        <label><strong>Remaining Volume:</strong></label> {{ tap.remainingVolume }}
+    </div>
+  </div>
+</div>
+<div class="col-md-6">
+  <div *ngFor="let righttap of right">
+    <h4>Right Tap</h4>
+    <div>
+        <label><strong>Brewery:</strong></label> {{ righttap.brewery }}
+    </div>
+    <div>
+      <label><strong>Beer:</strong></label> {{ righttap.beer }}
+    </div>
+    <div>
+      <label><strong>Description:</strong></label>
+      {{ righttap.description }}
+    </div>
+    <div>
+        <label><strong>ABV:</strong></label> {{ righttap.abv }}
+    </div>
+    <div>
+        <label><strong>Remaining Volume:</strong></label> {{ righttap.remainingVolume }}
+    </div>
+  </div>
 </div>

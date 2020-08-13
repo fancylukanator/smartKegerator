@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const AUTH_API = 'http://192.168.2.19:8080/api/auth/';
+const AUTH_API = 'http://localhost:8080/api/auth/';  // localhost for development on pc, ip adress for deployment on raspberry pi
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

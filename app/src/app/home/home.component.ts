@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
+import { TapsService } from '../_services/taps.service';
 
 @Component({
   selector: 'app-home',
@@ -8,19 +9,19 @@ import { UserService } from '../_services/user.service';
 })
 export class HomeComponent implements OnInit {
 
-  content: string;
+  left: any;
+  right:any;
 
-  constructor(private userService: UserService) { }
+  constructor(private tapService: TapsService) { }
 
-  ngOnInit(): void {
-    this.userService.getPublicContent().subscribe(
-      data => {
-        this.content = data;
-      },
-      err => {
-        this.content = JSON.parse(err.error).message;
-      }
-    );
+  ngOnInit() {
+    this.tapService.findLeft().subscribe((data) => {
+      this.left = data;
+    });
+
+    this.tapService.findRight().subscribe((res) => {
+      this.right = res;
+    });
   }
 
 }

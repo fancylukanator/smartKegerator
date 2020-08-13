@@ -1,0 +1,82 @@
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by beer"
+          [(ngModel)]="beer"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchBeer()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Tap List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let tap of taps; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveTap(tap, i)"
+        >
+          {{ tap.beer }}
+        </li>
+      </ul>
+  
+      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllTaps()">
+        Remove All
+      </button>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentTap">
+        <h4>Details</h4>
+        <div>
+          <label><strong>Tap:</strong></label> {{ currentTap.tapNumber }}
+      </div>
+        <div>
+            <label><strong>Brewery:</strong></label> {{ currentTap.brewery }}
+        </div>
+        <div>
+          <label><strong>Beer:</strong></label> {{ currentTap.beer }}
+        </div>
+        <div>
+          <label><strong>Description:</strong></label>
+          {{ currentTap.description }}
+        </div>
+        <div>
+            <label><strong>ABV:</strong></label> {{ currentTap.abv }}
+        </div>
+        <div>
+            <label><strong>Size:</strong></label> {{ currentTap.initialVolume }}
+        </div>
+        <div>
+            <label><strong>Remaining Volume:</strong></label> {{ currentTap.remainingVolume }}
+        </div>
+        <div>
+            <label><strong>Price:</strong></label> {{ currentTap.price }}
+        </div>
+        <div>
+          <label><strong>Status:</strong></label>
+          {{ currentTap.inUse ? "Tapped" : "Untapped" }}
+        </div>
+        
+  
+        <a class="badge badge-warning" routerLink="/taps/{{ currentTap._id }}">
+          Edit
+        </a>
+      </div>
+  
+      <div *ngIf="!currentTap">
+        <br />
+        <p>Please click on a Tap...</p>
+      </div>
+    </div>
+  </div>

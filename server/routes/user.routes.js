@@ -1,7 +1,10 @@
-const { authJwt } = require("../middlewares");
+const {  authJwt  } = require("../middlewares");
 const controller = require("../controllers/user.controller");
+const sensorcontroller = require("../controllers/sensor.controller");
+const tapcontroller = require("../controllers/tap.controller");
 
 module.exports = function(app) {
+
   app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "x-access-token, Origin, Content-Type, Accept");
     next();
@@ -9,7 +12,27 @@ module.exports = function(app) {
 
   app.get("/api/test/all", controller.allAccess);
 
-  app.get("/api/test/user", [authJwt.verifyToken], controller.userBoard);
+  app.post("/api/test/admin/taps/", tapcontroller.create);
+
+  app.get("/api/test/admin/taps/", tapcontroller.findAll);
+
+  app.get("/api/test/admin/taps/inUse", tapcontroller.findAllinUse);
+
+  app.get("/api/test/all/left", tapcontroller.findLeft);
+
+  app.get("/api/test/all/right", tapcontroller.findRight);
+
+  app.get("/api/test/admin/taps/:id", tapcontroller.findOne);
+
+  app.put("/api/test/admin/taps/:id", tapcontroller.update);
+
+  app.delete("/api/test/admin/taps/:id", tapcontroller.delete);
+
+  app.delete("/api/test/admin/taps/", tapcontroller.deleteAll);
+
+  //app.get("/api/test/user", [authJwt.verifyToken], controller.userBoard);
+
+  app.get("/api/test/user", authJwt.verifyToken, sensorcontroller.serialSensorData);
 
   app.get(
     "/api/test/mod",
@@ -22,4 +45,5 @@ module.exports = function(app) {
     [authJwt.verifyToken, authJwt.isAdmin],
     controller.adminBoard
   );
+  
 };

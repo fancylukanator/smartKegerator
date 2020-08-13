@@ -16,9 +16,14 @@ verifyToken = (req, res, next) => {
       return res.status(401).send({ message: "Unauthorized!" });
     }
     req.userId = decoded.id;
+
+    User.findOne({_id: decoded.id}).then(function(user){
+      req.username = user.username;
+    });
     next();
   });
 };
+
 
 isAdmin = (req, res, next) => {
   User.findById(req.userId).exec((err, user) => {

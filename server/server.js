@@ -81,15 +81,15 @@ function initial() {
 //const parser = port.pipe(new Readline({ delimiter: '\r\n' }))
 //parser.on('data', (sensorData) => {
     //console.log(sensorData);
-    //Sensor.create(JSON.parse(sensorData));
+   // Sensor.create(JSON.parse(sensorData));
     //send data to mongo
-    //const doc = new Sensor(JSON.parse(sensorData));
-    //doc.save(function(err, doc) {
-     // if (err) return console.error(err);
-      //console.log("Document inserted Successfully")
+   // const doc = new Sensor(JSON.parse(sensorData));
+   // doc.save(function(err, doc) {
+   //   if (err) return console.error(err);
+    //  console.log("Document inserted Successfully")
    // });
     //send data to socket
-    //io.sockets.emit('sensorData', {sensorData:sensorData});
+   // io.sockets.emit('sensorData', {sensorData:sensorData});
 //});
 
 //const doc = new Sensor({"Temperature":90,"Rate1":0,"Vol1":0.00,"PourVol1":0.00,"Rate2":0,"Vol2":0.00,"PourVol2":0.00});

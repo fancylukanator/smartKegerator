@@ -1,0 +1,107 @@
+<div style="width: 400px; margin: auto;">
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <div class="form-group">
+          <label for="tapNumber">Tap Number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="tapNumber"
+            required
+            [(ngModel)]="tap.tapNumber"
+            name="tapNumber"
+          />
+        </div>
+
+        <div class="form-group">
+            <label for="brewery">Brewery</label>
+            <input
+              type="text"
+              class="form-control"
+              id="brewery"
+              required
+              [(ngModel)]="tap.brewery"
+              name="brewery"
+            />
+        </div>
+
+          <div class="form-group">
+            <label for="beer">Beer</label>
+            <input
+              type="text"
+              class="form-control"
+              id="beer"
+              required
+              [(ngModel)]="tap.beer"
+              name="beer"
+            />
+        </div>
+  
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input
+            class="form-control"
+            id="description"
+            required
+            [(ngModel)]="tap.description"
+            name="description"
+          />
+        </div>
+
+        <div class="form-group">
+            <label for="abv">ABV</label>
+            <input
+              type="text"
+              class="form-control"
+              id="abv"
+              required
+              [(ngModel)]="tap.abv"
+              name="abv"
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="initialVolume">Keg Volume</label>
+            <input
+              type="text"
+              class="form-control"
+              id="initialVolume"
+              required
+              [(ngModel)]="tap.initialVolume"
+              name="initialVolume"
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="remainingVolume">Volume Remaining</label>
+            <input
+              type="text"
+              class="form-control"
+              id="remainingVolume"
+              required
+              [(ngModel)]="tap.remainingVolume"
+              name="remainingVolume"
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input
+              type="text"
+              class="form-control"
+              id="price"
+              required
+              [(ngModel)]="tap.price"
+              name="price"
+            />
+        </div>
+  
+        <button (click)="saveTap()" class="btn btn-success">Submit</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>You submitted successfully!</h4>
+        <button class="btn btn-success" (click)="newTap()">Add</button>
+      </div>
+    </div>
+  </div>
