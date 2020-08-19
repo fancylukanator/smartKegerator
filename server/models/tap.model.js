@@ -12,7 +12,6 @@ const Tap = mongoose.model(
     remainingVolume: {type:Number},
     price:  {type:Number},
     inUse: {type:Boolean},
-    logs: [{type: mongoose.Schema.Types.ObjectId, ref: 'Log'}]
   })
 );
 

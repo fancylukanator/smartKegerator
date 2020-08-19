@@ -67,9 +67,8 @@
           </div>
         </div>
       </form>
-  
-      <div class="alert alert-success" *ngIf="isLoggedIn">
-        Logged in as {{ roles }}.
-      </div>
+      <a class="badge badge-warning" *ngIf="isLoggedIn" routerLink= "/user">
+      Click here to drink
+      </a>
     </div>
 </div>

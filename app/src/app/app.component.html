@@ -5,23 +5,29 @@
       <li class="nav-item">
         <a href="/home" class="nav-link" routerLink="home">Home </a>
       </li>
-      <li class="nav-item" *ngIf="showAdminBoard">
+      <li class="nav-item">
+        <a href="/stats" class="nav-link" routerLink="stats">Stats </a>
+      </li>
+      <li class="nav-item">
+        <a href="/logs" class="nav-link" routerLink="logs">Logs </a>
+      </li>
+      <!-- <li class="nav-item" *ngIf="showAdminBoard">
         <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
+      </li> -->
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a class="nav-link" routerLink="manage-users">Manage Users</a>
       </li>
       <li class="nav-item" *ngIf="showAdminBoard">
         <a class="nav-link" routerLink="taps">Taps</a>
       </li>
-      <li class="nav-item" *ngIf="showAdminBoard">
+       <li class="nav-item" *ngIf="showAdminBoard">
         <a class="nav-link" routerLink="add">Add Tap</a>
-      </li>
-      <li class="nav-item" *ngIf="showModeratorBoard">
+      </li> 
+      <!-- <li class="nav-item" *ngIf="showModeratorBoard">
         <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
-      </li>
-      <li class="nav-item">
-        <a href="/drink" class="nav-link" *ngIf="isLoggedIn" routerLink="drink">drink</a>
       </li>
     </ul>
 

@@ -1,0 +1,63 @@
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by User"
+          [(ngModel)]="user"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchTitle()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>User</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let stat of stats; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveStat(stat, i)"
+        >
+          {{ stat.username }}
+        </li>
+      </ul>
+  
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentstat">
+        <h4>Details</h4>
+        <div>
+          <label><strong>User:</strong></label> {{ currentstat.username }}
+        </div>
+        <div>
+            <label><strong>Total:</strong></label> {{ currentstat.totalVolume }}
+        </div>
+        <div>
+          <label><strong>Last Drink:</strong></label> {{ currentstat.lastActive }}
+        </div>
+        <div>
+          <label><strong>Drinks Today:</strong></label> {{ currentstat.dayVolume }}
+        </div>
+        <div>
+          <label><strong>Drinks this Week:</strong></label> {{ currentstat.weekVolume }}
+        </div>
+        <div>
+          <label><strong>Drinks this Month:</strong></label> {{ currentstat.monthVolume }}
+        </div>
+      </div>
+  
+      <div *ngIf="!currentstat">
+        <br />
+        <p>Click on a User for details</p>
+      </div>
+    </div>
+  </div>

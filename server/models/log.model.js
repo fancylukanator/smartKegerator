@@ -9,6 +9,7 @@ const Log = mongoose.model(
       ref:"Tap"
     },
     volume: {type:Number},
+    price: {type:Number},
     time: {type: Date, default: Date.now}
 
   })

@@ -20,7 +20,10 @@ import { SocketioService } from './_services/socketio.service';
 import { AddTapComponent } from './tap/add-tap/add-tap.component';
 import { TapDetailsComponent } from './tap/tap-details/tap-details.component';
 import { TapListComponent } from './tap/tap-list/tap-list.component';
-import { DrinkComponent } from './drink/drink.component';
+import { LogComponent } from './log/log.component';
+import { StatsComponent } from './stats/stats.component';
+import { UsersListComponent } from './manage-users/users-list/users-list.component';
+import { UsersDetailsComponent } from './manage-users/users-details/users-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +38,10 @@ import { DrinkComponent } from './drink/drink.component';
     AddTapComponent,
     TapDetailsComponent,
     TapListComponent,
-    DrinkComponent,
+    LogComponent,
+    StatsComponent,
+    UsersListComponent,
+    UsersDetailsComponent,
   ],
   imports: [
     BrowserModule,
