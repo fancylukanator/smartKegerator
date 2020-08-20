@@ -1,5 +1,7 @@
 <div class="container">
     <header class="jumbotron">
-      <p>what the fuck</p>
+      <p> Status: {{ this.status }}</p>
+      <p> Temperature: {{ this.socket.sensorData.Temperature }}</p>
+      <p> Pour Volume: {{ this.socket.sensorData.Vol1 }} {{ this.socket.sensorData.Vol2 }}</p>
     </header>
 </div>

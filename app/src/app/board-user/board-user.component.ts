@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
+import { SocketioService } from '../_services/socketio.service';
 
 @Component({
   selector: 'app-board-user',
@@ -9,8 +10,10 @@ import { UserService } from '../_services/user.service';
 export class BoardUserComponent implements OnInit {
 
   content: string;
+  socket: any;
+  status: any;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private socketService: SocketioService) { }
 
   ngOnInit(): void {
     this.userService.getUserBoard().subscribe(
@@ -21,6 +24,14 @@ export class BoardUserComponent implements OnInit {
         this.content = JSON.parse(err.error).message;
       }
     );
+    this.socketService.listen('sensorData').subscribe((data) => {
+
+      this.socket = data;
+      console.log(this.socket);
+    });
+    this.socketService.listen('status').subscribe((data) => {
+      this.status = data;
+    });
   }
 
 }

@@ -1,6 +1,7 @@
-var app = require('express')();
-var http = require('http').createServer(app);
-var io = require('socket.io')(http);
+const app = require('express')();
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
+global.io = io;
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const dbConfig = require("./config/db.config");
@@ -74,37 +75,6 @@ function initial() {
 }
 
 
-//Read arduino data via serial port and send data to socket
-//const SerialPort = require('serialport')
-//const Readline = require('@serialport/parser-readline');
-//const { serialize } = require('v8');
-//const port = new SerialPort('COM3')       //COM3 for windown /dev/ttyACM0 for Rpi
-//const parser = port.pipe(new Readline({ delimiter: '\r\n' }))
-//parser.on('data', (sensorData) => {
-    //console.log(sensorData);
-   // Sensor.create(JSON.parse(sensorData));
-    //send data to mongo
-   // const doc = new Sensor(JSON.parse(sensorData));
-   // doc.save(function(err, doc) {
-   //   if (err) return console.error(err);
-    //  console.log("Document inserted Successfully")
-   // });
-    //send data to socket
-   // io.sockets.emit('sensorData', {sensorData:sensorData});
-//});
-
-//const doc = new Sensor({"Temperature":90,"Rate1":0,"Vol1":0.00,"PourVol1":0.00,"Rate2":0,"Vol2":0.00,"PourVol2":0.00});
-
-//doc.save(function(err, doc) {
-  //if (err) return console.error(err);
-  //console.log("Document inserted Successfully")
-//});
-
-//serve index.html at localhost:3000
-//app.get('/', (req, res) => {
-    //res.sendFile(`${__dirname}/../angularapp/index.html`);
-//});
-
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 http.listen(PORT, () => {
@@ -114,7 +84,7 @@ http.listen(PORT, () => {
 
 
 
-//listen for connection
+//listen for socket connection
 io.on('connection', (socket) => {
     console.log('A user connected');
     //now send the data

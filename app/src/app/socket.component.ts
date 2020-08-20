@@ -17,8 +17,5 @@ export class SocketComponent implements OnInit {
       this.socketService.listen('test event').subscribe((data) => {
           console.log(data);
       })
-      this.socketService.listen('sensorData').subscribe((data) => {
-        console.log(data);
-      })
     }
 }

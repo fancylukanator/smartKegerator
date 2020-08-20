@@ -4,7 +4,6 @@ const sensorcontroller = require("../controllers/sensor.controller");
 const tapcontroller = require("../controllers/tap.controller");
 const logcontroller = require("../controllers/log.controller");
 const statscontroller = require("../controllers/stats.controller");
-const aggregatecontroller = require("../controllers/aggregate.controller");
 
 module.exports = function(app) {
 
