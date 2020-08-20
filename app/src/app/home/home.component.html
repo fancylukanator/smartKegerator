@@ -1,21 +1,21 @@
 <div class="col-md-6">
-  <div *ngFor="let tap of left">
+  <div *ngFor="let lefttap of left">
     <h4>Left Tap</h4>
     <div>
-        <label><strong>Brewery:</strong></label> {{ tap.brewery }}
+        <label><strong>Brewery:</strong></label> {{ lefttap.brewery }}
     </div>
     <div>
-      <label><strong>Beer:</strong></label> {{ tap.beer }}
+      <label><strong>Beer:</strong></label> {{ lefttap.beer }}
     </div>
     <div>
       <label><strong>Description:</strong></label>
-      {{ tap.description }}
+      {{ lefttap.description }}
     </div>
     <div>
-        <label><strong>ABV:</strong></label> {{ tap.abv }}
+        <label><strong>ABV:</strong></label> {{ lefttap.abv }}
     </div>
     <div>
-        <label><strong>Remaining Volume:</strong></label> {{ tap.remainingVolume }}
+        <label><strong>Remaining Volume:</strong></label> {{ lefttap.remainingVolume | number:'1.1-2'}}
     </div>
   </div>
 </div>
@@ -36,7 +36,7 @@
         <label><strong>ABV:</strong></label> {{ righttap.abv }}
     </div>
     <div>
-        <label><strong>Remaining Volume:</strong></label> {{ righttap.remainingVolume }}
+        <label><strong>Remaining Volume:</strong></label> {{ righttap.remainingVolume | number:'1.1-2' }}
     </div>
   </div>
 </div>

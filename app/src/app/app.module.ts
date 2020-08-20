@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
 import { SocketComponent } from './socket.component';
@@ -24,6 +25,7 @@ import { LogComponent } from './log/log.component';
 import { StatsComponent } from './stats/stats.component';
 import { UsersListComponent } from './manage-users/users-list/users-list.component';
 import { UsersDetailsComponent } from './manage-users/users-details/users-details.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,12 +44,14 @@ import { UsersDetailsComponent } from './manage-users/users-details/users-detail
     StatsComponent,
     UsersListComponent,
     UsersDetailsComponent,
+    LeaderboardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [authInterceptorProviders, SocketioService],
   bootstrap: [AppComponent]

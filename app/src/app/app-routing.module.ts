@@ -15,16 +15,18 @@ import { LogComponent } from './log/log.component';
 import { StatsComponent } from './stats/stats.component';
 import { UsersDetailsComponent } from './manage-users/users-details/users-details.component';
 import { UsersListComponent } from './manage-users/users-list/users-list.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'leaderboard', component: LeaderboardComponent },
   { path: 'logs', component: LogComponent },
   { path: 'stats', component: StatsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'user', component: BoardUserComponent },
+  { path: 'drink', component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: 'taps', component: TapListComponent },
