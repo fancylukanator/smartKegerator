@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class SocketioService {
 
   socket: any;
-  readonly uri: string = "http://localhost:8080"
+  readonly uri: string = "http://192.168.2.19:8080"
   constructor() {  
     this.socket = io(this.uri);
    }

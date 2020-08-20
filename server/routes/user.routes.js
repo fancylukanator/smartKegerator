@@ -26,9 +26,9 @@ module.exports = function(app) {
 
   app.get("/api/test/all/stats/:id", statscontroller.findOne);
 
-  app.put("/api/test/admin/stats/:id", tapcontroller.update);
+  app.put("/api/test/admin/stats/:id", statscontroller.update);
 
-  app.delete("/api/test/admin/stats/:id", tapcontroller.delete);
+  app.delete("/api/test/admin/stats/:id", statscontroller.delete);
 
 
   // taps
