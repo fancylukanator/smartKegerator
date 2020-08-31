@@ -26,7 +26,7 @@ export class LeaderboardComponent implements OnInit {
         let week = data.map(data => data.weekVolume)
         let day = data.map(data => data.dayVolume)
 
-        this.chart = new Chart('canvas', {
+        this.chart.push( new Chart('canvas', {
           type: 'bar',
           data: {
             labels: user,
@@ -68,7 +68,7 @@ export class LeaderboardComponent implements OnInit {
               position: 'top',
             },
           }
-        });
+        }));
       })
   }
 

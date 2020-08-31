@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { model } from '../leaderboard/model';
 
-const API_URL = 'http://192.168.2.19:8080/api/test/all/stats';
+const API_URL = 'http://localhost:8080/api/test/all/stats';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class StatsService {
         return this.http.get(API_URL);
     }
 
-    leaderboard() {
-      return this.http.get(API_URL)
+    public leaderboard(): Observable<model[]> {
+      return this.http.get<model[]>(API_URL)
     }
 
     get(id): Observable<any> {
@@ -28,7 +29,7 @@ export class StatsService {
     }
 
     getAggregate(): Observable<any> {
-      return this.http.get('http://192.168.2.19:8080/api/test/all/aggregate');
+      return this.http.get('http://localhost:8080/api/test/all/aggregate');
   }
 
 }

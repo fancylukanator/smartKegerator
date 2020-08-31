@@ -35,7 +35,7 @@ exports.serialSensorData = (req, res) => {
             console.log(data[0].beer);
         });
     // Read the port data
-    parser = port.pipe(new Readline({ delimiter: '\n' }));
+    parser = port.pipe(new Readline({ delimiter: '\r\n' }));
     port.open(function () {
         console.log('serial port open');
     });
@@ -164,7 +164,8 @@ exports.serialSensorData = (req, res) => {
             };
             updateStats();
             global.io.sockets.emit('status', 'Pour completed succesfully, you will now be logged out');
-            port.unpipe(parser)
+            port.unpipe(parser);
+            port.flush();
             port.close();
             return;
         }

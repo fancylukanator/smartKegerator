@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const API_URL = 'http://192.168.2.19:8080/api/test/all/stats';
+const API_URL = 'http://localhost:8080/api/test/all/stats';
 
 @Injectable({
   providedIn: 'root'
@@ -20,11 +20,11 @@ export class ManageUsersService {
   }
 
   update(id, data): Observable<any> {
-    return this.http.put(`http://192.168.2.19:8080/api/test/admin/stats/${id}`, data);
+    return this.http.put(`http://localhost:8080/api/test/admin/stats/${id}`, data);
   }
 
   delete(id): Observable<any> {
-    return this.http.delete(`http://192.168.2.19:8080/api/test/admin/stats/${id}`);
+    return this.http.delete(`http://localhost:8080/api/test/admin/stats/${id}`);
   }
 
   findByUser(user): Observable<any> {
