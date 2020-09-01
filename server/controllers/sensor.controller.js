@@ -175,4 +175,3 @@ exports.serialSensorData = (req, res) => {
 
 
 
-
