@@ -77,7 +77,7 @@ function initial() {
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
-http.listen(PORT, '192.168.2.19', () => {
+http.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
