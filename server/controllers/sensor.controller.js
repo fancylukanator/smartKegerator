@@ -35,7 +35,7 @@ exports.serialSensorData = (req, res) => {
             console.log(data[0].beer);
         });
     // Read the port data
-    parser = port.pipe(new Readline({ delimiter: '\r\n' }));
+    parser = port.pipe(new Readline({ delimiter: '\n' }));
     port.open(function () {
         console.log('serial port open');
     });
