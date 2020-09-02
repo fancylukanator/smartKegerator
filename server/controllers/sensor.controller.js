@@ -151,6 +151,7 @@ exports.serialSensorData = (req, res) => {
                     }}
                   ])
                   .then(stats => {
+                      console.log(stats)
                       console.log(stats[0]._id, stats[0].dayVolume);
                     User.findOneAndUpdate({ username: stats[0]._id}, {
                         dayVolume: stats[0].dayVolume,
