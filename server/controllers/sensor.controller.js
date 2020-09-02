@@ -40,6 +40,7 @@ exports.serialSensorData = (req, res) => {
     parser.on('data', sensorData => {
         console.log('got word from arduino:', sensorData);
         var n = sensorData.startsWith("{");
+        parsedData = ''
         if (n == true) {
           parsedData = JSON.parse(sensorData);
         };
