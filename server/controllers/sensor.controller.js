@@ -170,6 +170,7 @@ exports.serialSensorData = (req, res) => {
             updateStats();
             global.io.sockets.emit('status', 'Pour completed succesfully, you will now be logged out');
             port.unpipe(parser);
+            port.flush(console.log('flushed'))
             port.close(console.log('port closed'));
             
         }
