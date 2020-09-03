@@ -36,7 +36,7 @@ exports.serialSensorData = (req, res) => {
     parser = port.pipe(new Readline({ delimiter: '\n' }));
     port.open(function () {
         console.log('serial port open');
-        console.log(re.username)
+        console.log(req.username)
     });
     parser.on('data', sensorData => {
         console.log('got word from arduino:', sensorData);
