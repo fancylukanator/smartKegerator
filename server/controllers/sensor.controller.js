@@ -41,7 +41,7 @@ exports.serialSensorData = (req, res) => {
     parser.on('data', sensorData => {
         console.log('got word from arduino:', sensorData);
         var n = sensorData.startsWith("{");
-        parsedData = '{"State":1}';
+        parsedData = '{"Temperature":0.00,"Rate1":0,"Vol1":0.00,"Rate2":0,"Vol2":0.00,"State":1}';
         if (n == true) {
           parsedData = JSON.parse(sensorData);
         };
