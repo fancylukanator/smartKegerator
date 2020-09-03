@@ -47,7 +47,7 @@ exports.serialSensorData = (req, res) => {
         global.io.sockets.emit('status', 'ready to pour');
         global.io.sockets.emit('sensorData', {sensorData:parsedData});        //send data to socket
         if (parsedData.State == 0) {                 //State == 1 when rate is non zero and == 0 when rate is 0 for 10 seconds
-            //updateKeg();
+            updateKeg();
             function logPour () {
 
                 if (parsedData.Vol1 !=0) {
@@ -96,7 +96,7 @@ exports.serialSensorData = (req, res) => {
                         });
                 }
             };
-            //logPour();
+            logPour();
             function updateStats () {
                 var today = new Date(),
                     oneDay = ( 1000 * 60 * 60 * 24 ),
@@ -166,11 +166,11 @@ exports.serialSensorData = (req, res) => {
                   })
 
             };
-            //updateStats();
+            updateStats();
             global.io.sockets.emit('status', 'Pour completed succesfully, you will now be logged out');
-            //port.unpipe(parser);
-            //port.flush( console.log('flushed'));
-            //port.close(console.log('port closed'));
+            port.unpipe(parser);
+            port.flush( console.log('flushed'));
+            port.close(console.log('port closed'));
             return;
         }
     });
