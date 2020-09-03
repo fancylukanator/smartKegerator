@@ -41,7 +41,7 @@ exports.serialSensorData = (req, res) => {
     parser.on('data', sensorData => {
         console.log('got word from arduino:', sensorData);
         var n = sensorData.startsWith("{");
-        parsedData = ''
+        parsedData = '{"State":1}';
         if (n == true) {
           parsedData = JSON.parse(sensorData);
         };
@@ -171,7 +171,6 @@ exports.serialSensorData = (req, res) => {
             global.io.sockets.emit('status', 'Pour completed succesfully, you will now be logged out');
             port.unpipe(parser);
             port.flush();
-            port.clear(console.log('cleared'))
             port.close(console.log('port closed'));
             
         }
