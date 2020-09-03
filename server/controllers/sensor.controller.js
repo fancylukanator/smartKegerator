@@ -8,7 +8,7 @@ const Readline = require('@serialport/parser-readline');
 const { serialize } = require('v8');
 const { user } = require("../models");
 const port = new SerialPort('/dev/ttyACM0', { baudRate: 9600 });       //COM3 for windown /dev/ttyACM0 for Rpi
-
+const { Termios } = require('node-termios');
 
 
 function updateKeg () {
@@ -170,7 +170,7 @@ exports.serialSensorData = (req, res) => {
             updateStats();
             global.io.sockets.emit('status', 'Pour completed succesfully, you will now be logged out');
             port.unpipe(parser);
-            port.flush(console.log('flushed'))
+            Termios.tcflush();
             port.close(console.log('port closed'));
             
         }
