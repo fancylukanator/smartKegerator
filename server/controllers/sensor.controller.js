@@ -172,8 +172,9 @@ exports.serialSensorData = (req, res) => {
             port.unpipe(parser);
             
             port.close(console.log('port closed'));
-            return;
+            
         }
+        return;
     });
 };
 
