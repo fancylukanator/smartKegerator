@@ -96,7 +96,7 @@ exports.serialSensorData = (req, res) => {
                         });
                 }
             };
-            logPour();
+            //logPour();
             function updateStats () {
                 var today = new Date(),
                     oneDay = ( 1000 * 60 * 60 * 24 ),
@@ -166,11 +166,11 @@ exports.serialSensorData = (req, res) => {
                   })
 
             };
-            updateStats();
+            //updateStats();
             global.io.sockets.emit('status', 'Pour completed succesfully, you will now be logged out');
-            port.unpipe(parser);
-            port.flush( console.log('flushed'));
-            port.close(console.log('port closed'));
+            //port.unpipe(parser);
+            //port.flush( console.log('flushed'));
+            //port.close(console.log('port closed'));
             return;
         }
     });
