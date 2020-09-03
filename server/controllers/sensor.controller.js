@@ -36,7 +36,6 @@ exports.serialSensorData = (req, res) => {
     parser = port.pipe(new Readline({ delimiter: '\n' }));
     port.open(function () {
         console.log('serial port open');
-        console.log(req.username)
     });
     parser.on('data', sensorData => {
         console.log('got word from arduino:', sensorData);
@@ -55,6 +54,7 @@ exports.serialSensorData = (req, res) => {
                     Tap.find({ inUse: true, tapNumber: 1}).
                         then(keg1 => {
                             var cost = keg1[0].price*parsedData.Vol1;  // unit price of keg 1 times units
+                            console.log(req.username);
                             const doc = new Log({"user":req.username,"tap":keg1[0]._id,"volume":parsedData.Vol1,"price":cost});  //create log
                             doc.save(function(err, doc) {
                             if (err) return console.error(err);
