@@ -37,7 +37,7 @@ exports.serialSensorData = (req, res) => {
     port.open(function () {
         console.log('serial port open');
         port.flush((error) => {
-          console.log("flushed");
+          console.log("flushed at start");
           parser.on('data', sensorData => {
             console.log('got word from arduino:', sensorData);
             var n = sensorData.startsWith("{");
@@ -48,7 +48,6 @@ exports.serialSensorData = (req, res) => {
             global.io.sockets.emit('status', 'ready to pour');
             global.io.sockets.emit('sensorData', {sensorData:parsedData});        //send data to socket
             if (parsedData.State == 0) {                 //State == 1 when rate is non zero and == 0 when rate is 0 for 10 seconds
-                updateKeg();
                 function logPour () {
     
                     if (parsedData.Vol1 !=0) {
@@ -97,7 +96,6 @@ exports.serialSensorData = (req, res) => {
                             });
                     }
                 };
-                logPour();
                 function updateStats () {
                     var today = new Date(),
                         oneDay = ( 1000 * 60 * 60 * 24 ),
@@ -167,11 +165,20 @@ exports.serialSensorData = (req, res) => {
                       })
     
                 };
-                updateStats();
-                global.io.sockets.emit('status', 'Pour completed succesfully, you will now be logged out');
-                port.unpipe(parser);
-                port.close(console.log('port closed'));
-            }
+                port.flush((error) => {
+                  console.log('port flushed at end')
+                  port.unpipe(parser);
+                  port.close((error) => {
+                    console.log('port closed')
+                    updateKeg();
+                    logPour((error) => {
+                      updateStats((error) => {
+                      });
+                    });
+                  });
+                });
+
+            };
             return;
         });
         });
