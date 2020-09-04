@@ -168,8 +168,9 @@ exports.serialSensorData = (req, res) => {
             global.io.sockets.emit('sensorData', {sensorData:parsedData});        //send data to socket
             var count = 0;
             if (parsedData.Rate1 == 0 && parsedData.Rate2 == 0) {
-              console.log(parsedData.Rate1 + "yoooo")
+              console.log("rate 1: " + parsedData.Rate1)
               count += 1;
+              console.log("count: " + count)
               if (count == 10) {
                 setTimeout(doAllTheThings, 5000);
               };
