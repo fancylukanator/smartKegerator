@@ -172,6 +172,10 @@ exports.serialSensorData = (req, res) => {
             if (parsedData.Rate1 == 0 && parsedData.Rate2 == 0){
               count += 1;
             }
+            if (parsedData.Rate1 != 0 || parsedData.Rate2 != 0){
+                count = 0;
+            }
+            
             console.log("COUNT" + count);
 
             if (count == 10) {
