@@ -37,11 +37,11 @@ exports.serialSensorData = (req, res) => {
     port.open(function () {
         console.log('serial port open');
     });
-    //port.flush( console.log('flushed'));
-    parser.on('data', sensorData => {
+    port.flush((error) => {
+      parser.on('data', sensorData => {
         console.log('got word from arduino:', sensorData);
         var n = sensorData.startsWith("{");
-        parsedData = JSON.parse('{"Temperature":0.00,"Rate1":0,"Vol1":0.00,"Rate2":0,"Vol2":0.00,"State":1}');
+        parsedData = '';
         if (n == true) {
           parsedData = JSON.parse(sensorData);
         };
@@ -170,12 +170,12 @@ exports.serialSensorData = (req, res) => {
             updateStats();
             global.io.sockets.emit('status', 'Pour completed succesfully, you will now be logged out');
             port.unpipe(parser);
-            port.flush();
             port.close(console.log('port closed'));
-            
         }
         return;
     });
+    });
+
 };
 
 
