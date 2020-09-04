@@ -159,6 +159,14 @@ exports.serialSensorData = (req, res) => {
           console.log("flushed at start");
           parser.on('data', sensorData => {
             console.log('got word from arduino:', sensorData);
+            var count = 0;
+            while (parsedData.Rate1 == 0 && parsedData.Rate2 == 0) {
+              console.log("sup bitch");
+              count += 1;
+              if (count == 10) {
+                setTimeout(doAllTheThings, 5000);
+              };
+            };
             var n = sensorData.startsWith("{");
             parsedData = '';
             if (n == true) {
@@ -184,14 +192,7 @@ exports.serialSensorData = (req, res) => {
             });
             return;
           });
-          var count = 0;
-          while (parsedData.Rate1 == 0 && parsedData.Rate2 == 0) {
-            console.log("sup bitch");
-            count += 1;
-            if (count == 10) {
-              setTimeout(doAllTheThings, 5000);
-            };
-          };
+
         };
         //setTimeout(doAllTheThings, 10000);
 
