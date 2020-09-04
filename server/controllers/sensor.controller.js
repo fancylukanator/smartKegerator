@@ -202,10 +202,8 @@ exports.serialSensorData = (req, res) => {
             port.close((error) => {
               console.log('port closed')
               updateKeg();
-              logPour((error) => {
-                updateStats((error) => {
-                });
-              });
+              logPour();
+              updateStats();
             });
             return;
           });
