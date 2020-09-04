@@ -166,7 +166,7 @@ exports.serialSensorData = (req, res) => {
             };
             global.io.sockets.emit('status', 'ready to pour');
             global.io.sockets.emit('sensorData', {sensorData:parsedData});        //send data to socket
-            console.log("BOOOOP" + parsedData.Rate1);
+            console.log("BOOOOP" + parsedData.Rate2);
             //var count = 0;
             //if (parsedData.Rate1 == 0 && parsedData.Rate2 == 0) {
               //console.log("rate 1: " + parsedData.Rate1)
