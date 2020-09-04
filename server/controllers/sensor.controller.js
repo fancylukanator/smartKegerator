@@ -184,15 +184,16 @@ exports.serialSensorData = (req, res) => {
             });
             return;
           });
-        };
-        //setTimeout(doAllTheThings, 10000);
-        var count = 0;
-        while (parsedData.Rate1 == 0 && parsedData.Rate2 == 0) {
-          count += 1;
-          if (count == 10) {
-            setTimeout(doAllTheThings, 5000);
+          var count = 0;
+          while (parsedData.Rate1 == 0 && parsedData.Rate2 == 0) {
+            count += 1;
+            if (count == 10) {
+              setTimeout(doAllTheThings, 5000);
+            };
           };
         };
+        //setTimeout(doAllTheThings, 10000);
+
 
     });
 };
