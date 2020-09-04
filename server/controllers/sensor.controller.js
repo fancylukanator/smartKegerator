@@ -159,6 +159,13 @@ exports.serialSensorData = (req, res) => {
           console.log("flushed at start");
           parser.on('data', sensorData => {
             console.log('got word from arduino:', sensorData);
+            var n = sensorData.startsWith("{");
+            parsedData = '';
+            if (n == true) {
+              parsedData = JSON.parse(sensorData);
+            };
+            global.io.sockets.emit('status', 'ready to pour');
+            global.io.sockets.emit('sensorData', {sensorData:parsedData});        //send data to socket
             var count = 0;
             while (parsedData.Rate1 == 0 && parsedData.Rate2 == 0) {
               console.log("sup bitch");
@@ -167,13 +174,6 @@ exports.serialSensorData = (req, res) => {
                 setTimeout(doAllTheThings, 5000);
               };
             };
-            var n = sensorData.startsWith("{");
-            parsedData = '';
-            if (n == true) {
-              parsedData = JSON.parse(sensorData);
-            };
-            global.io.sockets.emit('status', 'ready to pour');
-            global.io.sockets.emit('sensorData', {sensorData:parsedData});        //send data to socket
             //if (parsedData.State == 0) {                 //State == 1 when rate is non zero and == 0 when rate is 0 for 10 seconds
             //};
         });
