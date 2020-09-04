@@ -186,6 +186,7 @@ exports.serialSensorData = (req, res) => {
           });
           var count = 0;
           while (parsedData.Rate1 == 0 && parsedData.Rate2 == 0) {
+            console.log("sup bitch");
             count += 1;
             if (count == 10) {
               setTimeout(doAllTheThings, 5000);
