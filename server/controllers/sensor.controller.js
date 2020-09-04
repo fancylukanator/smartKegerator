@@ -151,6 +151,7 @@ exports.serialSensorData = (req, res) => {
   
   };
     // Read the port data
+    var count = 0;
     ready = port.pipe(new Ready( { delimiter: '{'}));
     parser = port.pipe(new Readline({ delimiter: '\n' }));
     port.open(function () {
@@ -167,7 +168,6 @@ exports.serialSensorData = (req, res) => {
             global.io.sockets.emit('status', 'ready to pour');
             global.io.sockets.emit('sensorData', {sensorData:parsedData});        //send data to socket
             console.log("BOOOOP" + parsedData.Rate2);
-            var count = 0;
             if (parsedData.Rate2 == 0){
               count += 1;
             }
