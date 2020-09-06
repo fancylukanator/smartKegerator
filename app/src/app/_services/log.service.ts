@@ -24,7 +24,7 @@ export class LogService {
     }
 
     delete(id): Observable<any> {
-      return this.http.delete(`http://192.168.2.19:8080/api/all/admin/logs/${id}`);
+      return this.http.delete(`http://192.168.2.19:8080/api/all/logs/${id}`);
     }
 
 }
