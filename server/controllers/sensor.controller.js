@@ -165,7 +165,6 @@ exports.serialSensorData = (req, res) => {
             if (n == true) {
               parsedData = JSON.parse(sensorData);
             };
-            global.io.sockets.emit('status', 'ready to pour');
             global.io.sockets.emit('sensorData', {sensorData:parsedData});        //send data to socket
             
             if (parsedData.Rate1 == 0 && parsedData.Rate2 == 0){
@@ -176,6 +175,10 @@ exports.serialSensorData = (req, res) => {
             }
             
             console.log("COUNT" + count);
+
+            if (count == 2) {
+              global.io.sockets.emit('status', 'ready to pour');
+            }
 
             if (count == 10) {
               setTimeout(doAllTheThings, 5000);
@@ -203,7 +206,7 @@ exports.serialSensorData = (req, res) => {
               console.log('port closed')
               updateKeg();
               logPour();
-              updateStats();
+              setTimeout(updateStats, 1000);
             });
             return;
           });
