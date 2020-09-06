@@ -47,6 +47,10 @@
         <div>
           <label><strong>Time:</strong></label>{{ currentLog.time }}
         </div>
+        <button class="badge badge-danger mr-2" (click)="deleteLog()">
+          Delete
+        </button>
+
       </div>
   
       <div *ngIf="!currentLog">

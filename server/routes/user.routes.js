@@ -20,6 +20,8 @@ module.exports = function(app) {
 
   app.get("/api/test/all/logs/:id", logcontroller.findOne);
 
+  app.delete("/api/test/all/logs/:id", logcontroller.delete);
+
   // stats / users
 
   app.get("/api/test/all/stats/", statscontroller.findAll);

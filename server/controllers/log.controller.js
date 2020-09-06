@@ -38,3 +38,26 @@ exports.findOne = (req, res) => {
           .send({ message: "Error retrieving Log with id=" + id });
       });
 };
+
+// delete a log
+exports.delete = (req, res) => {
+  const id = req.params.id;
+
+  Log.findByIdAndRemove(id)
+    .then(data => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot delete Log with id=${id}. Maybe Log was not found!`
+        });
+      } else {
+        res.send({
+          message: "Log was deleted successfully!"
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Could not delete Log with id=" + id
+      });
+    });
+};

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LogService } from '../_services/log.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-log',
@@ -13,7 +14,11 @@ export class LogComponent implements OnInit {
   currentIndex = -1;
   user = '';
 
-  constructor(private logService: LogService) { }
+  constructor(
+    private logService: LogService,
+    private route: ActivatedRoute,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
     this.retrieveLogs();
@@ -52,5 +57,17 @@ export class LogComponent implements OnInit {
       error => {
         console.log(error);
       });
+  }
+
+  deleteLog(): void {
+    this.logService.delete(this.currentLog._id)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.router.navigate(['/logs']);
+        },
+        error => {
+          console.log(error);
+        });
   }
 }
