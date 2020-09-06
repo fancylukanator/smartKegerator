@@ -155,6 +155,7 @@ exports.serialSensorData = (req, res) => {
     ready = port.pipe(new Ready( { delimiter: '{'}));
     parser = port.pipe(new Readline({ delimiter: '\n' }));
     port.open(function () {
+        global.io.sockets.emit('status', 'initializing sensor, please wait');
         console.log('serial port open');
         port.flush((error) => {
           console.log("flushed at start");
