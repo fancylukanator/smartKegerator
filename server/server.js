@@ -13,7 +13,7 @@ const dbConfig = require("./config/db.config");
 
 //add body-parser and cors middlewares
 var corsOptions = {
-    origin: 'http://192.168.2.19:8081',
+    origin: 'http://192.168.2.21:8081',
     credentials: true
 };
 app.use(cors(corsOptions));

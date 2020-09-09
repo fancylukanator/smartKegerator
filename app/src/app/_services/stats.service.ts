@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { model } from '../leaderboard/model';
 
-const API_URL = 'http://192.168.2.19:8080/api/test/all/stats';
+const API_URL = 'http://192.168.2.21:8080/api/test/all/stats';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,7 @@ export class StatsService {
     }
 
     getAggregate(): Observable<any> {
-      return this.http.get('http://192.168.2.19:8080/api/test/all/aggregate');
+      return this.http.get('http://192.168.2.21:8080/api/test/all/aggregate');
   }
 
 }

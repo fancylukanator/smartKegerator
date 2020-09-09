@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const API_URL = 'http://192.168.2.19:8080/api/test/admin/taps';
+const API_URL = 'http://192.168.2.21:8080/api/test/admin/taps';
 
 @Injectable({
   providedIn: 'root'
@@ -39,12 +39,12 @@ export class TapsService {
     return this.http.get(`${API_URL}?beer=${beer}`);
   }
   findAllinUse(): Observable<any> {
-    return this.http.get('http://192.168.2.19:8080/api/test/admin/taps/inUse')
+    return this.http.get('http://192.168.2.21:8080/api/test/admin/taps/inUse')
   }
   findLeft(): Observable<any> {
-    return this.http.get('http://192.168.2.19:8080/api/test/all/left')
+    return this.http.get('http://192.168.2.21:8080/api/test/all/left')
   }
   findRight(): Observable<any> {
-    return this.http.get('http://192.168.2.19:8080/api/test/all/right')
+    return this.http.get('http://192.168.2.21:8080/api/test/all/right')
   }
 }
