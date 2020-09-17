@@ -1,5 +1,5 @@
-<div class="col-md-6">
-  <div *ngFor="let lefttap of left">
+<div style="float: right;" class="col-md-6">
+  <div  *ngFor="let lefttap of left">
     <h4>Right Tap</h4>
     <div>
         <label><strong>Brewery:</strong></label> {{ lefttap.brewery }}
@@ -19,8 +19,8 @@
     </div>
   </div>
 </div>
-<div class="col-md-6">
-  <div *ngFor="let righttap of right">
+<div style="float: left;" class="col-md-6">
+  <div  *ngFor="let righttap of right">
     <h4>Left Tap</h4>
     <div>
         <label><strong>Brewery:</strong></label> {{ righttap.brewery }}
